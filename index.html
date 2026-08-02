@@ -162,7 +162,31 @@ function openTermModal(){$('#customModule').innerHTML=DATA.modules.map(m=>`<opti
 function closeModal(){$('#termModal').classList.remove('open')}
 function saveCustomTerm(){const en=$('#customEn').value.trim(),pt=$('#customPt').value.trim(),definition=$('#customDef').value.trim(),mid=$('#customModule').value;if(!en||!pt||!definition){toast('Preencha termo, tradução e definição.');return}const id=`custom-${Date.now()}`;state.customTerms.push({id,module:mid,en,pt,definition,note:'Termo personalizado'});saveState(true);closeModal();renderDictionary();toast('Termo adicionado.')}
 function createInternalBackup(slot='Manual'){const arr=loadJSON(BACKUP_KEY,[]);const payload=JSON.parse(JSON.stringify(state));arr.push({at:nowISO(),slot,payload});localStorage.setItem(BACKUP_KEY,JSON.stringify(arr.slice(-30)))}
-function ensureScheduledBackups(){const arr=loadJSON(BACKUP_KEY,[]),td=todayKey(),h=new Date().getHours(),slots=[];if(h>=8)slots.push(`${td} 08h`);if(h>=20)slots.push(`${td} 20h`);let changed=false;for(const slot of slots){if(!arr.some(b=>b.slot===slot)){arr.push({at:nowISO(),slot,payload:JSON.parse(JSON.stringify(state))});changed=true}}if(changed)localStorage.setItem(BACKUP_KEY,JSON.stringify(arr.slice(-30)))}
+function ensureScheduledBackups(){
+  try{
+    const arr=loadJSON(BACKUP_KEY,[]),td=todayKey(),h=new Date().getHours(),slots=[];
+    if(h>=8)slots.push(`${td} 08h`);
+    if(h>=20)slots.push(`${td} 20h`);
+    let changed=false;
+    for(const slot of slots){
+      if(!arr.some(b=>b.slot===slot)){
+        arr.push({at:nowISO(),slot,payload:JSON.parse(JSON.stringify(state))});
+        changed=true;
+      }
+    }
+    if(!changed)return true;
+    const attempts=[30,20,12,8,4];
+    for(const keep of attempts){
+      try{
+        localStorage.setItem(BACKUP_KEY,JSON.stringify(arr.slice(-keep)));
+        return true;
+      }catch(e){}
+    }
+    return false;
+  }catch(e){
+    return false;
+  }
+}
 function exportBackup(){const data={app:'TechLingo TI',exportedAt:nowISO(),state};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`TechLingo_TI_backup_${todayKey()}_${new Date().toTimeString().slice(0,8).replaceAll(':','-')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Backup exportado.')}
 function restoreInternalBackup(i,arr){if(!arr[i]||!confirm('Restaurar este backup e substituir o estado atual?'))return;createInternalBackup('Antes da restauração');state=normalizeState(arr[i].payload);saveState(true);applySettings();renderPage(ui.page);toast('Backup restaurado.')}
 function importBackupFile(file){const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result),incoming=obj.state||obj;if(!incoming||typeof incoming!=='object')throw new Error();if(!confirm('Importar este backup e substituir o progresso atual?'))return;createInternalBackup('Antes da importação');state=normalizeState(incoming);saveState(true);applySettings();renderPage(ui.page);toast('Backup importado.')}catch(e){toast('Arquivo de backup inválido.')}};r.readAsText(file)}
@@ -201,10 +225,29 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredIns
 window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;updateInstallControls();toast('TechLingo TI instalado.')});
 const installChip=$('#installChip');if(installChip)installChip.onclick=installTechLingoApp;
 async function requestPersistentStorage(){try{if(navigator.storage&&navigator.storage.persist)await navigator.storage.persist()}catch(e){}}
-if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(reg=>reg.update()).catch(()=>{}))}
 requestPersistentStorage();
 
-applySettings();ensureScheduledBackups();setInterval(ensureScheduledBackups,30*60*1000);updateStreak();renderNav();showPage(ui.page||'home');initSync();
+function bootTechLingo(){
+  try{applySettings()}catch(e){}
+  try{updateStreak()}catch(e){}
+  const validPages=new Set(navItems.map(item=>item[0]));
+  if(!validPages.has(ui.page))ui.page='home';
+  try{
+    renderNav();
+    showPage(ui.page||'home');
+  }catch(e){
+    ui.page='home';
+    try{renderNav();showPage('home')}catch(inner){
+      const target=document.querySelector('#homeContent');
+      if(target)target.innerHTML='<div class="card"><h3>Falha ao carregar a interface</h3><p class="muted">Atualize a página. Seus dados locais não foram apagados.</p></div>';
+    }
+  }
+  try{initSync()}catch(e){}
+  setTimeout(()=>ensureScheduledBackups(),500);
+  setInterval(()=>ensureScheduledBackups(),30*60*1000);
+}
+bootTechLingo();
 </script>
 </body>
 </html>
