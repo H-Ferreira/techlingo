@@ -2,7 +2,7 @@
   "id": "./index.html",
   "name": "TechLingo TI — Inglês Técnico",
   "short_name": "TechLingo TI",
-  "description": "Treinador offline de inglês técnico para Tecnologia da Informação e concursos fiscais.",
+  "description": "Treinador offline de inglês técnico para TI, com sincronização opcional entre dispositivos pelo Google Apps Script.",
   "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "./index.html",

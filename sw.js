@@ -1,4 +1,4 @@
-const CACHE_NAME='techlingo-ti-app-v3-github';
+const CACHE_NAME='techlingo-ti-app-v4-sync';
 const APP_SHELL=[
   './',
   './index.html',
