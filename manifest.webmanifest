@@ -2,7 +2,7 @@
   "id": "./index.html",
   "name": "TechLingo TI — Inglês Técnico",
   "short_name": "TechLingo TI",
-  "description": "Treinador offline de inglês técnico para TI, com sincronização opcional entre dispositivos pelo Google Apps Script.",
+  "description": "Treinador mobile de inglês técnico para TI, com sessões ilimitadas, funcionamento offline e sincronização instantânea.",
   "lang": "pt-BR",
   "dir": "ltr",
   "start_url": "./index.html",
@@ -13,8 +13,8 @@
     "standalone",
     "minimal-ui"
   ],
-  "background_color": "#f7f7f5",
-  "theme_color": "#101820",
+  "background_color": "#071a2d",
+  "theme_color": "#071a2d",
   "categories": [
     "education",
     "productivity"
