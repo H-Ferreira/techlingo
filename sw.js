@@ -1,4 +1,4 @@
-const CACHE_NAME='techlingo-ti-app-v5-voices-fix';
+const CACHE_NAME='techlingo-ti-app-v6-instant-sync';
 const APP_SHELL=[
   './',
   './index.html',
