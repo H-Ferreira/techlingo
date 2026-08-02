@@ -1,4 +1,4 @@
-const CACHE_NAME='techlingo-ti-mobile-pro-v7';
+const CACHE_NAME='techlingo-ti-mobile-first-v8';
 const APP_SHELL=[
   './',
   './index.html',

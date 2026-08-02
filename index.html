@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071a2d">
-<title>TechLingo TI — Inglês Técnico Mobile Pro</title>
+<title>TechLingo TI — Inglês Técnico Mobile First</title>
 <meta name="application-name" content="TechLingo TI">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,7 +50,7 @@ button,.nav-btn,.bottom-btn,.node,.option{-webkit-user-select:none;user-select:n
 
 
 /* =========================================================
-   TECHLINGO TI — MOBILE PRO v7
+   TECHLINGO TI — MOBILE FIRST v8
    Interface original, móvel primeiro, sem limite de tentativas
    ========================================================= */
 :root{
@@ -159,6 +159,112 @@ body{
 @media(max-width:360px){.metric-grid-pro{grid-template-columns:1fr}.metric-card-pro{min-height:80px}.bottom-btn{font-size:0}.bottom-btn i{font-size:1.2rem}.command-hero{padding-inline:17px}.hero-title{font-size:2rem}}
 @media(prefers-reduced-motion:reduce){.float-chip{animation:none}.activity-track b{transition:none}}
 
+
+/* =========================================================
+   MOBILE FIRST v8 — correção estrutural e experiência móvel
+   ========================================================= */
+html,body{max-width:100%;overflow-x:hidden}
+body{-webkit-text-size-adjust:100%;touch-action:manipulation}
+.home-shell,.command-hero,.metric-grid-pro,.home-dashboard,.dashboard-card,.home-section,.home-section-head,.module-rail,.hero-copy-pro,.tech-visual,.mission-layout,.mission-copy,.activity-chart,.metric-card-pro,.metric-copy{min-width:0;max-width:100%}
+button,.btn,.option,.bottom-btn{-webkit-tap-highlight-color:transparent}
+.theme-quick{display:none;width:40px;height:40px;flex:0 0 40px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);font-size:1.05rem;align-items:center;justify-content:center;box-shadow:0 7px 18px rgba(17,42,68,.08)}
+
+@media(max-width:900px){
+  html,body,.app,.main,.page,.content,#homeContent{width:100%;max-width:100%;min-width:0;overflow-x:hidden}
+  body{background:linear-gradient(180deg,#eaf5ff 0,#f6fbff 34%,var(--bg) 72%) fixed}
+  html[data-theme="dark"] body{background:linear-gradient(180deg,#05111d 0,#081827 38%,var(--bg) 76%) fixed}
+  .theme-quick{display:flex}
+  .topbar{height:62px;padding:0 10px;border-bottom:1px solid color-mix(in srgb,var(--line) 74%,transparent)}
+  .topbar-inner{width:100%;max-width:100%;gap:7px}
+  .mobile-brand{min-width:0;flex:1;font-size:.93rem;white-space:nowrap}
+  .mobile-brand:before{width:32px;height:32px;flex:0 0 32px;border-radius:11px}
+  .install-chip{display:none!important}
+  .status-strip{flex:0 0 auto;margin:0;padding:0;background:transparent;gap:5px}
+  .status{height:36px;min-width:45px;justify-content:center;padding:0 8px;border:1px solid var(--line);border-radius:13px;background:var(--surface);box-shadow:0 6px 16px rgba(17,42,68,.06);font-size:.75rem}
+  .status span,.status.goal{display:none}
+  .content{padding:14px 12px calc(100px + env(safe-area-inset-bottom));min-height:calc(100dvh - 62px)}
+  .home-shell{display:flex;flex-direction:column;width:100%;gap:12px}
+
+  .command-hero{width:100%!important;max-width:100%!important;min-width:0!important;display:flex!important;flex-direction:column;grid-template-columns:minmax(0,1fr)!important;gap:13px;min-height:0;padding:19px 17px 18px;border-radius:27px;overflow:hidden}
+  .command-hero:before{background-size:24px 24px;opacity:.8}
+  .hero-copy-pro{order:2;width:100%;min-width:0}
+  .tech-visual{order:1;position:relative;width:100%!important;min-width:0!important;height:142px;display:grid;place-items:center;overflow:hidden}
+  .tech-visual svg{width:170px!important;max-width:52vw;height:auto}
+  .float-chip{display:none!important}
+  .hero-badge{font-size:.62rem;padding:6px 9px;max-width:100%;white-space:normal}
+  .hero-title{max-width:100%;font-size:clamp(2rem,9.2vw,2.72rem);line-height:1.01;letter-spacing:-.055em;margin:12px 0 10px;text-wrap:balance}
+  .hero-subtitle{font-size:.86rem;line-height:1.52;color:#c9d9e7}
+  .hero-actions-pro{display:grid;grid-template-columns:1fr;gap:8px;margin-top:17px;width:100%}
+  .hero-actions-pro .btn{width:100%;min-width:0;min-height:51px;padding:11px 13px;border-radius:16px;white-space:normal}
+  .hero-mini-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:14px}
+  .hero-mini-stats span{display:grid;justify-items:center;gap:1px;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center;font-size:.61rem}
+  .hero-mini-stats b{font-size:.86rem}
+
+  .metric-grid-pro{width:100%!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px}
+  .metric-card-pro{width:100%;min-width:0;min-height:88px;padding:12px 10px;border-radius:19px;gap:9px;background:linear-gradient(145deg,var(--surface),color-mix(in srgb,var(--metric) 6%,var(--surface)))}
+  .metric-icon{width:39px;height:39px;flex:0 0 39px;border-radius:13px;font-size:1rem}
+  .metric-copy{overflow:hidden}
+  .metric-copy span{font-size:.58rem;letter-spacing:.04em;white-space:normal}
+  .metric-copy strong{font-size:1.22rem;line-height:1.1}
+  .metric-copy small{display:none}
+
+  .home-dashboard{width:100%!important;display:flex!important;flex-direction:column;grid-template-columns:minmax(0,1fr)!important;gap:10px}
+  .dashboard-card{width:100%!important;min-width:0!important;padding:16px;border-radius:21px;overflow:hidden}
+  .dashboard-card h3{font-size:.98rem}.dashboard-card p{font-size:.75rem}
+  .mission-layout{width:100%;grid-template-columns:76px minmax(0,1fr);gap:12px;margin-top:13px}
+  .goal-ring{width:72px;height:72px}.goal-ring:before{inset:8px}.goal-ring strong{font-size:.9rem}.goal-ring span{font-size:.53rem}
+  .mission-copy h4{font-size:.98rem;line-height:1.25}.mission-copy p{font-size:.72rem;line-height:1.4;margin-bottom:10px}
+  .mission-copy .btn{width:100%;min-height:44px;white-space:normal}
+  .activity-chart{width:100%!important;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;height:128px;margin-top:10px}
+  .activity-col{min-width:0;grid-template-rows:16px 1fr 15px;gap:3px}
+  .activity-track{width:100%;height:88px;padding:3px}.activity-col>span{font-size:.54rem}.activity-col small{font-size:.52rem}
+
+  .home-section{width:100%!important;overflow:hidden}
+  .home-section-head{width:100%;align-items:flex-start;margin:5px 1px 9px}
+  .home-section-head>div{min-width:0}.home-section-head h2{font-size:1.15rem}.home-section-head p{font-size:.72rem;line-height:1.4}
+  .text-link{flex:0 0 auto;font-size:.72rem;padding:5px 0 5px 8px;white-space:nowrap}
+  .module-rail{box-sizing:border-box;width:100%!important;max-width:100%!important;min-width:0!important;display:flex!important;grid-template-columns:none!important;overflow-x:auto!important;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;gap:10px;margin:0!important;padding:0 1px 9px!important;scrollbar-width:none}
+  .module-rail::-webkit-scrollbar{display:none}
+  .home-module-card{box-sizing:border-box;flex:0 0 calc(100% - 24px)!important;width:calc(100% - 24px)!important;max-width:360px;min-width:0!important;scroll-snap-align:start;min-height:190px;padding:17px;border-radius:21px}
+  .home-module-card h3{font-size:1rem}.home-module-card p{min-height:0;font-size:.73rem}
+  .home-module-card .btn{white-space:normal;line-height:1.2}
+  .module-topline,.module-progress-line{min-width:0}.module-state{max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  .bottom-nav{box-sizing:border-box;width:calc(100% - 14px)!important;max-width:560px;left:50%!important;right:auto!important;transform:translateX(-50%)!important;bottom:max(7px,env(safe-area-inset-bottom));grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:6px 4px;border-radius:21px}
+  .bottom-btn{min-width:0;min-height:51px;padding:4px 1px;border-radius:14px;font-size:.54rem;line-height:1.05;overflow:hidden}
+  .bottom-btn i{font-size:1.08rem;line-height:1}.bottom-btn.active{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 22%,transparent)}
+
+  .section-head{align-items:flex-start;margin:8px 0 12px}.section-head h2{font-size:1.2rem}.section-head p{font-size:.76rem}
+  .review-grid,.progress-grid,.settings-grid{grid-template-columns:minmax(0,1fr)!important;gap:11px}
+  .card{min-width:0;padding:16px;border-radius:20px;overflow:hidden}
+  .dictionary-tools{grid-template-columns:minmax(0,1fr)!important;gap:8px}
+  .dictionary-tools input{grid-column:auto!important}
+  .word-card{grid-template-columns:minmax(0,1fr) auto!important;gap:9px;padding:13px;border-radius:18px}
+  .word-def{grid-column:1/-1}.word-actions{grid-column:2;grid-row:1}
+  .route{width:100%;max-width:100%;overflow:hidden}.unit{margin:14px 0 29px}.unit-head{padding:14px 15px;border-radius:17px}.unit-head h3{font-size:.98rem}
+  .node-wrap:nth-child(3n+1){transform:translateX(-30px)}.node-wrap:nth-child(3n){transform:translateX(30px)}
+
+  .session-overlay{width:100%;max-width:100%;overflow:hidden}
+  .session-top{height:62px;padding:0 10px;gap:10px}.close-session{width:42px;height:42px;flex:0 0 42px}
+  .session-body{display:block;padding:20px 12px 128px}.exercise{width:100%;max-width:100%;min-width:0}
+  .exercise h2{font-size:1.38rem;line-height:1.22;margin:12px 0 17px}.term-big{font-size:clamp(2rem,12vw,3.25rem);overflow-wrap:anywhere}
+  .intro-card{padding:19px;border-radius:22px}.intro-translation{font-size:1.18rem}.intro-def{font-size:.88rem}
+  .options{grid-template-columns:minmax(0,1fr)!important;gap:9px}.option{width:100%;min-width:0;min-height:62px;padding:14px;border-radius:17px;overflow-wrap:anywhere}
+  .typing{width:100%;min-width:0;min-height:58px;padding:14px;font-size:1.05rem}
+  .session-footer{min-height:112px;padding:11px 12px calc(11px + env(safe-area-inset-bottom))}.footer-inner{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;width:100%}.session-footer .btn{width:100%;min-width:0;min-height:49px}
+}
+
+@media(max-width:390px){
+  .mobile-brand{font-size:.84rem}.status{min-width:41px;padding-inline:6px}.theme-quick{width:37px;height:37px;flex-basis:37px}
+  .content{padding-inline:10px}.command-hero{padding:17px 15px}.hero-title{font-size:2rem}.tech-visual{height:128px}.tech-visual svg{width:152px!important}
+  .metric-card-pro{padding:11px 9px}.metric-icon{width:36px;height:36px;flex-basis:36px}.metric-copy strong{font-size:1.12rem}
+  .bottom-btn{font-size:.49rem}.bottom-btn i{font-size:1rem}
+}
+
+@media(max-width:340px){
+  .status.xp{display:none}.metric-grid-pro{grid-template-columns:minmax(0,1fr)!important}.hero-mini-stats{grid-template-columns:1fr}.bottom-btn{font-size:0}.bottom-btn i{font-size:1.12rem}
+}
+
 </style>
 </head>
 <body>
@@ -169,7 +275,7 @@ body{
   <div class="side-note">Tudo salvo automaticamente no aparelho.</div>
 </aside>
 <main class="main">
-<header class="topbar"><div class="topbar-inner"><div class="mobile-brand">TechLingo TI</div><button class="install-chip" id="installChip" type="button">＋ Instalar</button><div class="status-strip"><div class="status fire" title="Sequência diária">🔥 <b id="streakTop">0</b><span>dias</span></div><div class="status xp" title="Experiência total">⚡ <b id="xpTop">0</b><span>XP</span></div><div class="status goal" title="Meta diária">🎯 <b id="goalTop">0/30</b></div></div></div></header>
+<header class="topbar"><div class="topbar-inner"><div class="mobile-brand">TechLingo TI</div><button class="install-chip" id="installChip" type="button">＋ Instalar</button><button class="theme-quick" id="themeQuick" type="button" aria-label="Alternar tema" title="Alternar tema">☾</button><div class="status-strip"><div class="status fire" title="Sequência diária">🔥 <b id="streakTop">0</b><span>dias</span></div><div class="status xp" title="Experiência total">⚡ <b id="xpTop">0</b><span>XP</span></div><div class="status goal" title="Meta diária">🎯 <b id="goalTop">0/30</b></div></div></div></header>
 <section class="page active" id="page-home"><div class="content" id="homeContent"></div></section>
 <section class="page" id="page-path"><div class="content"><div class="section-head"><div><h2>Trilha de aprendizagem</h2><p>Lições curtas com revisão espaçada e recordação ativa.</p></div><button class="btn small" data-action="review-due">Revisar agora</button></div><div class="route" id="route"></div></div></section>
 <section class="page" id="page-review"><div class="content" id="reviewContent"></div></section>
@@ -334,7 +440,8 @@ async function syncNow(options={}){
 }
 function initSync(){syncConfig={...syncConfig,enabled:true,url:EMBEDDED_SYNC_URL,password:EMBEDDED_SYNC_PASSWORD,interval:0};saveSyncConfigLocal();startSyncScheduler();requestInstantSync();window.addEventListener('online',()=>requestInstantSync());window.addEventListener('focus',()=>{if(document.visibilityState==='visible')requestInstantSync()})}
 
-function applySettings(){document.documentElement.dataset.theme=state.settings.theme;document.documentElement.style.setProperty('--font',state.settings.font)}
+function updateThemeQuick(){const b=$('#themeQuick');if(!b)return;const dark=state.settings.theme==='dark';b.textContent=dark?'☀':'☾';b.setAttribute('aria-label',dark?'Ativar tema claro':'Ativar tema escuro');b.title=dark?'Ativar tema claro':'Ativar tema escuro';const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?'#07131f':'#edf6ff'}
+function applySettings(){document.documentElement.dataset.theme=state.settings.theme;document.documentElement.style.setProperty('--font',state.settings.font);updateThemeQuick()}
 function bindCommon(){$$('[data-page]').forEach(b=>b.onclick=()=>showPage(b.dataset.page));$$('[data-module-start]').forEach(b=>b.onclick=()=>startModule(b.dataset.moduleStart,Number(b.dataset.lesson||1)));$$('[data-start]').forEach(b=>b.onclick=()=>startSmart(b.dataset.start));$$('[data-action="review-due"]').forEach(b=>b.onclick=()=>startReview())}
 function bindWordActions(){$$('[data-speak]').forEach(b=>b.onclick=()=>{const t=allTerms().find(x=>x.id===b.dataset.speak);if(t)speak(t.en)});$$('[data-fav]').forEach(b=>b.onclick=()=>{const id=b.dataset.fav;state.favorites=state.favorites.includes(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];saveState(true);renderPage(ui.page)})}
 function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
@@ -404,6 +511,8 @@ requestPersistentStorage();
 
 function bootTechLingo(){
   applySettings();
+  const quickTheme=$('#themeQuick');
+  if(quickTheme)quickTheme.onclick=()=>{state.settings.theme=state.settings.theme==='dark'?'light':'dark';applySettings();saveState(true);if(ui.page==='settings')renderSettings()};
   ensureScheduledBackups();
   setInterval(ensureScheduledBackups,30*60*1000);
   updateStreak();
