@@ -1,11 +1,11 @@
 {
-  "id": "./index.html?v=7.2",
+  "id": "./index.html",
   "name": "TechLingo TI — Inglês Técnico",
   "short_name": "TechLingo TI",
-  "description": "Treinador offline de inglês técnico para TI, com sincronização protegida e recuperação automática.",
+  "description": "Treinador offline de inglês técnico para TI, com sincronização opcional entre dispositivos pelo Google Apps Script.",
   "lang": "pt-BR",
   "dir": "ltr",
-  "start_url": "./index.html?v=7.2",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "display_override": [
@@ -43,7 +43,7 @@
     {
       "name": "Continuar estudando",
       "short_name": "Estudar",
-      "url": "./index.html?v=7.2#home",
+      "url": "./index.html#home",
       "icons": [
         {
           "src": "./icon-192.png",
@@ -54,7 +54,7 @@
     {
       "name": "Revisão",
       "short_name": "Revisar",
-      "url": "./index.html?v=7.2#review",
+      "url": "./index.html#review",
       "icons": [
         {
           "src": "./icon-192.png",
@@ -65,7 +65,7 @@
     {
       "name": "Dicionário",
       "short_name": "Dicionário",
-      "url": "./index.html?v=7.2#dictionary",
+      "url": "./index.html#dictionary",
       "icons": [
         {
           "src": "./icon-192.png",
